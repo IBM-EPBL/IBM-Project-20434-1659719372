@@ -1,5 +1,5 @@
 # IBM-Project-20434-1659719372
-## CUSTOMER CARE REGISTRY
+## _CUSTOMER CARE REGISTRY_
 
 ### PROJECT INFORMATION
 
@@ -16,10 +16,10 @@
 
 ### TEAM MEMBERS
 
-> TEAM LEADER: S. Gavaskar
-> TEAM MEMBER: E. Mahendran
-> TEAM MEMBER: S. Prakash
-> TEAM MEMBER: P. Poongkannan
+> 1. TEAM LEADER: S. Gavaskar
+> 2. TEAM MEMBER: E. Mahendran
+> 3. TEAM MEMBER: S. Prakash
+> 4. TEAM MEMBER: P. Poongkannan
 
 
   
