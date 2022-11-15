@@ -1,0 +1,37 @@
+
+
+.sidebar{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .main{
+        padding-right: 40% ;
+        padding-left: 60%;
+    }
+}
+
+.list-group-item:hover{
+    color: white;
+    background-color: gray;
+    cursor: pointer;
+}
+.vr{
+    border-left: 1px solid black;
+    height: 100%;
+    width: 1px;
+}
+a:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#label{
+    align-items: center;
+}
+a:link {
+    text-decoration: none;
+}
+h2{
+    color: rgb(20, 83, 147);
+}

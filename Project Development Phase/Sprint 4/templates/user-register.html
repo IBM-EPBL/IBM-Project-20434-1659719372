@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCR</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/user-register.css" type="text/css">
+     <!-- Icon -->
+     <link rel="shortcut icon" href="../static/media/CCR.svg" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <!-- font awesome  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <!-- Bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex p-4 justify-content-around">
+        <div class="container-fluid">
+            <div><a href="#back" onclick="history.go(-1)"><img src="{{ url_for('static',filename='media/left-arrow.svg') }}" alt="back"
+                        style="height: 37px; width: 26px;"></a></div>
+            <div class="px-3">
+                    <h2>Customer Care Registry</h2>
+                </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link" href="/">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="vh-100 m-5 p-5">
+        <div class="container-fluid h-custom">
+            <div class="card card-stepper bg-light" style="border-radius: 10px;">
+                <div class="card-body p-5">
+                    <div class="divider d-flex align-items-center my-4">
+                        <p class="title text-center fs-5 fw-normal mx-3 mb-0">REGISTRATION</p>
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="img col-md-9 col-lg-6 col-xl-5 order-sm-1">
+                            <img src="../static/media/user-register-logo.svg"
+                                class="img-fluid" alt="Sample image">
+                        </div>
+
+                        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 order-sm-12">
+
+
+                            <!-- Message -->
+                            {% if message is defined and message %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                            {% endif %}
+
+                            <form action="{{ url_for('register')}}" method="post">
+
+                                <div class="mb-4">
+                                    <div class="form-outline mt-2 col-12">
+                                        <label class="form-label" for="form3Example1">Full Name</label>
+                                        <input type="username" id="uname" name="uname" class="form-control form-control-lg"
+                                            placeholder="Enter Username" required/>
+                                    </div>
+                                </div>
+
+                                <!-- Date Of Birth input -->
+                                <div class="mb-4">
+                                    <div class="form-outline mt-2 col-12">
+                                        <label class="form-label" for="form3Example3">Date of Birth</label>
+                                        <input type="text" id="dob" name="dob" class="form-control form-control-lg"
+                                            placeholder="Enter dob" onfocus="(this.type='Date')" required/>
+                                    </div>
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="mb-4">
+                                    <div class="form-outline mt-2 col-12">
+                                        <label class="form-label" for="form3Example3">E-mail address</label>
+                                        <input type="email" id="email" name="email" class="form-control form-control-lg"
+                                            placeholder="Enter E-mail address" required />
+                                    </div>
+                                </div>
+                                <!-- Phone input -->
+                                <div class="mb-4">
+                                    <div class="form-outline mt-2 col-12">
+                                        <label class="form-label" for="form3Example3">Phone Number</label>
+
+                                        <input type="tel" id="phoneno" name="phoneno" class="form-control form-control-lg"
+                                            placeholder="Enter Phone Number" required/>
+                                    </div>
+
+                                </div>
+                                <!-- Address input -->
+                                <div class="mb-4">
+                                    <div class="form-outline mt-2 col-12">
+                                        <label class="form-label" for="form3Example3">Address</label>
+
+                                        <input type="text" id="address" name="address" class="form-control form-control-lg"
+                                            placeholder="Enter Address" required />
+
+                                    </div>
+                                </div>
+                                <!-- Password input -->
+                                <div class="form-outline mb-4 col-12">
+                                    <label class="form-label" for="form3Example4">Password</label>
+                                    <div class="input-group mb-4">
+                                        <input name="password" type="password" class="input form-control form-control-lg" name="pwd" id="pwd" placeholder="Enter Password"
+                                            aria-label="password" aria-describedby="basic-addon1" required />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="password_show_hide2();">
+                                                <i class="fas fa-eye" id="show_eye2"></i>
+                                                <i class="fas fa-eye-slash d-none" id="hide_eye2"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4 col-12">
+                                    <label class="form-label" for="form3Example4">Confirm Password</label>
+                                    <div class="input-group mb-4">
+                                        <input name="password" type="password" class="input form-control form-control-lg" name="cpwd" id="cpwd" placeholder="Enter Password"
+                                            aria-label="password" aria-describedby="basic-addon1" required />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="password_show_hide1();">
+                                                <i class="fas fa-eye" id="show_eye1"></i>
+                                                <i class="fas fa-eye-slash d-none" id="hide_eye1"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Checkbox -->
+                                <div class="mb-4 col-12">
+                                    <div class="form-check mt-4">
+                                        <input class="form-check-input me-2" type="checkbox" value=""
+                                            id="form2Example3" required/>
+                                        <label class="form-check-label" for="form2Example3">I agree terms &
+                                            conditions</label>
+                                    </div>
+                                </div>
+                                <div class="mb-4 col-12 ">
+                                    <div class="text-center align-items-center justify-content-center text-lg-start mt-4 pt-2">
+                                        <button type="submit" class="btn btn-primary btn-lg"
+                                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
+                                    </div>
+                                </div>
+                                <div class="text-center col-12 ">
+                                    <label>Already have an account?</label><a class="mx-2" href="{{ url_for('login')}}">Login</a>
+                                </div>                        
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

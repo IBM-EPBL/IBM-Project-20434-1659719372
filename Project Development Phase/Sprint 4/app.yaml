@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ccr
+spec:
+  selector: 
+    app: ccr-app
+  ports:
+  - protocal: "TCP"
+    port: 5000
+    targetPort: 5000
+  type: LoadBalancer
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer_care_registry
+spec:
+  selector:
+    matchLabels: 
+      app: customer_care_registry
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: customer_care_registry
+    spec:
+      containers:
+      - name: ccr
+        image: ccr:1.0
+        imagePUllPolicy: Never
+        ports:
+        - containerPort: 5000

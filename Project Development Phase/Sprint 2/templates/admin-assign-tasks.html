@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Icon -->
+    <link rel="shortcut icon" href="{{ url_for('static',filename='media/CCR.svg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin-assign-tasks.css') }}" type="text/css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex p-4 justify-content-around">
+            <div class="container-fluid">
+                <div><a href="#back" onclick="history.go(-1)"><img src="{{ url_for('static',filename='media/left-arrow.svg') }}" alt="back"
+                            style="height: 30px; width:30px"></a></div>
+                <div class="px-3">
+                        <h2>complaint Care Registry</h2>
+                    </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link"
+                                href="/">Home</a></li>
+                        <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link"
+                            href="/adminlogout">Logout</a></li>
+                        </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="body"> -->
+        <div class="row pt-5 d-flex justify-content">
+            <div class="sidebar col-sm-3 col-md-2 px-4 py-4 pt-5 text-center">
+                <ul class="list-group nav nav-sidebar">
+                    <a href="/admindashboard">
+                        <li class="list-group-item p-5">Dashboard</li>
+                    </a>
+                    <a href="/addagent">
+                        <li class="list-group-item p-5">Add agent</li>
+                    </a>
+                    <a href="viewagent">
+                        <li class="list-group-item p-5">View agents</li>
+                    </a>
+                    <a href="/assigntasks">
+                        <li class="list-group-item p-5">Assign Tasks</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-9 col-md-10 col-sm-offset-3 col-md-offset-2 px-5 pt-4 main" id="view">
+                <div class="card col-12">        
+
+
+                    <!-- Message -->
+                    {% if 'Choose agent properly!' in message %}
+                    <div class="alert alert-warning text-center">{{ message }}</div> 
+                    {% endif %}
+                    
+                    <!-- Message -->
+                    {% if 'Task assigned successfully!' in message %}
+                    <div class="alert alert-success text-center">{{ message }}</div>
+                    {% endif %}
+
+
+                    <table class="table table-responsive table-borderless">
+                        <thead>
+                          <tr>
+                            <th scope=""> <input type="hidden" /></th>
+                            <th scope="col">Complainter Name</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Choose Agent</th>
+                            <th scope="col">Assign</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for complaint in complaint %}
+                            <form action="/assigntasks/assign" id="assignForm" method="GET">
+                            <tr>
+                                <td scope="row">
+                                    <input type="hidden" name="cno" id="cno" value="{{ complaint[1] }}" required>
+                                </td>
+                                <td scope="row">
+                                    <label type="text" name="cname" id="cname"required disabled>{{ complaint[2] }}</label>
+                                </td>
+                                <td scope="row">
+                                    <label type="text" name="subject" id="subject"  required disabled>{{ complaint[4] }}</label>
+                                </td>
+                                <td scope="row">
+                                    <select class="form-select form-select-md" aria-label="Default select example" name="aid">
+                                        <option selected>Choose Agent</option>
+                                        {% for agent in agents %}
+                                        <option value="{{ agent[0] }}" aria-required="true">{{ agent[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td scope="row">
+                                    <button type="submit" form="assignForm">
+                                        <img src="{{ url_for('static',filename='media/double-tick-icon.svg') }}" 
+                                        style="height: 30px; width: 30px;" alt="remove">
+                                    </button>
+                                </td>
+                            </tr>
+                            </form>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+

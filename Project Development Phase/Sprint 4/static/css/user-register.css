@@ -1,0 +1,45 @@
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 2px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+* {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+h2 {
+    color: rgb(20, 83, 147);
+}
+.title{
+    letter-spacing: 6px;
+}
+.btn, button{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.navbar{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+input[type]::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: black;
+    opacity: 0.35;
+}
