@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <!-- Icon -->
+    <link rel="shortcut icon" href="{{ url_for('static',filename='media/CCR.svg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user-view-status.css') }}" type="text/css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex p-4 justify-content-around">
+            <div class="container-fluid">
+                <div><a href="#back" onclick="history.go(-1)"><img src="{{ url_for('static',filename='media/left-arrow.svg') }}" alt="back"
+                            style="height: 37px; width:26px"></a>
+                </div>
+                <div class="px-3">
+                        <h2>Customer Care Registry</h2>
+                    </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link"
+                                href="/">Home</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="#!">Link</a></li> -->
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link dropdown-toggle" style="font-size: 1.4rem;" id="navbarDropdown" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">{{username}}</a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/userprofile">Profile</a>
+                                <a class="dropdown-item" href="/status">Status</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Log-out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="body"> -->
+        <div class="row pt-5 d-flex justify-content position-sticky">
+            <div class="sidebar col-sm-3 col-md-2 px-4 py-4 pt-5 text-center">
+                <ul class="list-group nav nav-sidebar pt-5">
+                    <a href="/complaint">
+                        <li class="list-group-item p-5">Sent Complaint</li>
+                    </a>
+                    <a href="/status">
+                        <li class="list-group-item p-5">View status</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="col-sm-10 col-md-10 col-sm-offset-3 col-md-offset-2 px-5 pt-4 main" id="view">
+                <div class="card col-12 bg-light p-1">
+                    <div class="card-header text-center">
+                        <div class="d-flex fs-5 justify-content-between" style="font-weight: 500;">
+                            <div class="col-1 col-md-1">
+                                <p class="card-title text-center" id="text0">C.No</p>
+                            </div>
+                            <div class="col-3 col-md-3">
+                                <p class="card-title text-center" id="text1">Sub</p>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <p class="card-title text-center" id="text2">Body</p>
+                            </div>
+                            <div class="col-2 col-md-2">
+                                <p class="card-title text-center" id="text3">Status</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {% for data in data %}
+                    <div class="card-body col-12">
+                        <div class="d-flex g-3 d-flex justify-content-between">
+
+                            <!-- complaint no -->
+                            <div class="col-1 col-md-1 mb-4">
+                                <p class="card-text text-center" id="text0">{{data[1]}}</p>
+                            </div>
+                            <!-- subject -->
+                            <div class="col-3 col-md-3 mb-4">
+                                <p class="card-text text-center" id="text1">{{data[4]}}</p>
+                            </div>
+                            <!-- body -->
+                            <div class="col-6 col-md-6 mb-4">
+                                <p class="card-text text-center" id="text2">{{data[5]}}</p>
+                            </div>
+                            <!-- status -->
+                            <div class="col-2 col-md-2 mb-4">
+                                {% if 'success' in data %}
+                                <p class="card-text text-center text-success" id="text3">{{data[6]}}</p>
+                                {% elif 'failure' in data %}
+                                <p class="card-text text-center text-danger" id="text3">{{data[6]}}</p>
+                                {% elif data %}
+                                <p class="card-text text-warning text-center" id="text3">{{data[6]}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="divider d-flex  pt-4"></div>
+                    </div>
+                    {% endfor %}
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCR</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin-login.css') }}" type="text/css">
+     <!-- Icon -->
+     <link rel="shortcut icon" href="{{ url_for('static',filename='media/CCR.svg') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex p-4 justify-content-around">
+        <div class="container-fluid">
+            <div><a href="#back" onclick="history.go(-1)"><img src="{{ url_for('static',filename='media/left-arrow.svg') }}" alt="back"
+                        style="height: 37px; width: 26px;"></a></div>
+            <div class="px-3 text-decoration-none">
+                    <h2>Customer Care Registry</h2>
+                </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link" href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="vh-100 m-5 p-5">
+        <div class="container-fluid h-custom">
+            <div class="card bg-light card-stepper" style="border-radius: 10px;">
+                <div class="card-body p-5">
+                    <div class="divider d-flex align-items-center my-4 mb-5 pb-5">
+                        <p class="title text-center fs-5 fw-normal mx-3 mb-0 ">LOGIN</p>
+                    </div>
+
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+
+                        <div class="col-md-9 col-lg-6 col-xl-5 py-3">
+                            <img src="{{ url_for('static',filename='media/admin-login-logo.svg') }}"
+                                class="img-fluid" alt="Sample image">
+                        </div>
+                        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+
+                            <form class="pb-5" action="{{ url_for('adminlogin') }}" method="post">
+
+                                <!-- Message -->
+                                {% if message is defined and message %}
+                                <div class="alert alert-warning text-center" id="message">{{ message }}</div>
+                                {% endif %}
+                                
+
+                                <!-- username input -->
+                                <div class="form-outline mb-4 ">
+                                    <label class="form-label" for="form3Example3">Email address</label>
+                                    <input type="text" id="admin-uname" name="admin-uname" class="form-control form-control-lg"
+                                        placeholder="Enter username" required/>
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-3">
+                                    <label class="form-label" for="form3Example4">Password</label>
+                                    <input type="password" id="admin-pwd" name="admin-pwd" class="form-control form-control-lg"
+                                        placeholder="Enter password" required/>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <!-- Checkbox -->
+                                    <div class="form-check mb-0">
+                                        <label class="form-check-label" for="form2Example3">
+                                            Remember me
+                                        </label>
+                                        <input class="form-check-input me-2" type="checkbox" value=""
+                                            id="form2Example3" />
+                                    </div>
+                                    <a href="#!" class="text-body">Forgot password?</a>
+                                </div>
+
+                                <div class="text-center text-lg-start mt-4 pt-2">
+                                    <button type="submit" class="btn btn-primary btn-lg"
+                                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

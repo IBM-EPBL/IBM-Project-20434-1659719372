@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="../static/css/index.css" type="text/css">
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../static/media/CCR.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="../static/js/index.js"></script>
+</head>
+
+<body>
+    <!-- Credits https://codepen.io/goodkatz/ -->
+    <div class="">
+        <div class="header">
+            <!--Content before waves-->
+            <div class="inner-header flex text-center">
+                <h1 class="ml3" id="ml3">Customer Care Registry</h1>
+                <div class="d-flex justify-content-center pt-5 mt-5">
+                    <div class="col-md-2 mb-4 px-4"> <a href="/login"> <button class="btn btn-outline-info btn-lg"
+                            style="height: 55px; width:140px;" onclick="login.html">User</button></a></div>
+                    <div class="col-md-2 mb-4 px-4"><a href="/adminlogin"><button class="btn btn-outline-info btn-lg"
+                            style="height: 55px; width:140px;" onclick="agent-login.html">Admin</button></a></div>
+                    <div class="col-md-2 mb-4 px-4"><a href="/agentlogin"><button class="btn btn-outline-info btn-lg"
+                            style="height: 55px; width:140px;" onclick="customer-login.html">Agent</button></a></div>
+                </div>
+            </div>
+            <!--Waves container-->
+            <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 24 150
+                28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave"
+                            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="parallax" style="width: fit-content; height:fit-content;">
+                        <use xlink:href="#gentle-wave" x="48" y="0" fill="#ffffe0" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="#ffffe0" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="#ffffe0" />
+                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#f5f5dc" />
+                    </g>
+                </svg>
+            </div>
+            <!--Waves end-->
+        </div>
+        <!--Header ends-->
+    </div>
+</body>
+
+</html>

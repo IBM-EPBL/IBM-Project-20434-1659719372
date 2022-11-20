@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="../static/fontawesome/css/all.css" type="text/css" />
+    <!-- Icon -->
+    <link rel="shortcut icon" href="{{ url_for('static',filename='media/CCR.svg') }}" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/admin-view-agents.css') }}" type="text/css"> -->
+    <link rel="stylesheet" href="../static/css/admindashboard.css" type="text/css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex p-4 justify-content-around">
+            <div class="container-fluid">
+                <div><a href="#back" onclick="history.go(-1)"><img src="{{ url_for('static',filename='media/left-arrow.svg') }}" alt="back" style="height: 30px; width:30px"></a>
+                </div>
+                <div class="px-3">
+                        <h2>Customer Care Registry</h2>
+                    </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link" href="/adminlogout">Logout</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="body"> -->
+        <div class="row pt-5 d-flex justify-content position-sticky">
+            <div class="sidebar col-sm-3 col-md-2 px-4 py-4 pt-5 text-center">
+                <ul class="list-group nav nav-sidebar">
+                    <a href="/admindashboard">
+                        <li class="list-group-item p-5">Dashboard</li>
+                    </a>
+                    <a href="/addagent">
+                        <li class="list-group-item p-5">Add agent</li>
+                    </a>
+                    <a href="/viewagent">
+                        <li class="list-group-item p-5">View agent</li>
+                    </a>
+                    <a href="/assigntasks">
+                        <li class="list-group-item p-5">Assign Tasks</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-9 col-md-10 col-sm-offset-3 col-md-offset-2 px-5 mt-5 pt-4 main justify-content-around" id="view">
+                <div class="row card-deck justify-content-around">
+
+                    <div class="card col-4 border-secondary text-secondary">
+                        <div class="card-body ">
+                        <h5 class="card-title text-center">TOTAL AGENTS<i class="fa-sharp fa-solid fa-user-tie mx-2"></i></h5>
+                       <p class="display-1 text-center">{{agents[0]}}</p>
+                      </div>
+                    </div>
+                    <div class="card col-4 border-secondary text-secondary">
+                      <div class="card-body">
+                        <h5 class="card-title text-center ">TOTAL COMPLAINTS<i class="fa-solid fa-folder-plus mx-2"></i></h5>
+                       <p class="display-1 text-center">{{complaints[0]}}</p>
+                      </div>
+                    </div>
+                    <div class="mt-5">
+
+                    <div class="row card-deck justify-content-around ">
+                        <div class="card col-4 col-md-4 border-success text-success">
+                          <div class="card-body">
+                            <h5 class="card-title text-center">TOTAL ASSIGNED<i class="fa-solid fa-file-circle-check mx-2"></i></h5>
+                            <p class="display-1 text-center">{{assigned[0]}}</p>
+                        </div>
+                        </div>
+                        <div class="card col-4 col-md-4 border-danger text-danger">
+                          <div class="card-body">
+                            <h5 class="card-title text-center">TOTAL UNASSIGNED<i class="fa-solid fa-file-excel mx-2"></i></h5>
+                            <p class="display-1 text-center">{{unassigned[0]}}</p>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

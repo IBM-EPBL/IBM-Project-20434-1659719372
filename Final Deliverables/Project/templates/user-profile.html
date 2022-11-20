@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../static/media/CCR.svg" type="image/x-icon">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="../static/css/user-profile.css" type="text/css">
+    <!-- script -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+</head>
+
+<body>
+    <section>
+        <!-- Navbar -->
+        <nav
+            class="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex p-4 justify-content-around position-sticky">
+            <div class="container-fluid">
+                <div><a href="#back" onclick="history.go(-1)"><img src="../static/media/left-arrow.svg" alt="back"
+                            style="height: 37px; width:26px"></a></div>
+                <div class="px-3">
+                    <h2>Customer Care Registry</h2>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active px-3" style="font-size: 1.4rem;"><a class="nav-link"
+                                href="/">Home</a>
+                        </li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="#!">Link</a></li> -->
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link dropdown-toggle" style="font-size: 1.4rem;" id="navbarDropdown" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">mahendran</a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/userprofile">Profile</a>
+                                <a class="dropdown-item" href="/status">Status</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Log-out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="body"> -->
+        <div class="row py-5 justify-content">
+            <div class="flex col-sm-9 col-md-12 px-5 align-items-center main" id="view">
+                <div class="container h-100">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-12 col-lg-10 col-xl-9">
+                            <h3 class="mb-4 pb-2 pb-md-0 text-center pt-5" style="color:#20b2aa;">Profile</h3>
+                            <div class="card shadow-2-strong card-registration bg-light align-items-center"
+                                style="border-radius: 15px;">
+                                <div class="card-body p-2">
+                                    <form>
+                                        <div class="row justify-content-around w-100">
+                                            <div class="img col-md-9 col-lg-6 col-xl-2 col-sm-6 order-sm-1 pt-5">
+                                                <img src="../static/media/user-clipboard-icon.svg"
+                                                    class="image float-end w-100 align-items-center" alt="Profile">
+                                            </div>
+                                            <div class="title col-md-9 col-lg-6 col-xl-6 col-sm-6 py-4 order-sm-12">
+                                                <h3 class="form-label py-5  text-center" style="font-weight: 600;"
+                                                    for="a-name" id="a-name">{{customers[0][1]}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="g-5">
+                                            <div class="row mb-3 justify-content-around">
+                                                <div class="">
+                                                    <label class="form-label" style="font-weight: 500;"
+                                                        for="email">E-mail
+                                                        :</label>
+                                                </div>
+                                                <div class="overflow-auto ">
+                                                    <label class="form-label" style="padding-left: 3rem;" for="a-email"
+                                                        id="">{{customers[0][2]}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="g-5">
+                                                <div class="mb-4 justify-content-around">
+                                                    <div class="col-sm-6 order-sm-1">
+                                                        <label class="form-label w-100" style="font-weight: 500;"
+                                                            for="dob">Date of Birth :</label>
+                                                    </div>
+                                                    <div class="overflow-auto col-sm-6 order-sm-12">
+                                                        <label class="form-label w-100" style="padding-left: 3rem;"
+                                                            for="a-dob" id="a-dob">{{customers[0][3]}}</label>
+                                                    </div>
+                                                </div>
+                                                <div class="g-5">
+                                                    <div class="mb-4 justify-content-around">
+                                                        <div class="col-sm-6 order-sm-1">
+                                                            <label class="form-label w-100" style="font-weight: 500;"
+                                                                for="phno">Phone No :</label>
+                                                        </div>
+                                                        <div class="overflow-auto col-sm-6 order-sm-12">
+                                                            <label class="form-label w-100" style="padding-left: 3rem;"
+                                                                for="a-phno" id="a-phno">{{customers[0][5]}}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="g-5">
+                                                        <div class="mb-4 justify-content-around">
+                                                            <div class="col-sm-6 order-sm-1">
+                                                                <label class="form-label w-100"
+                                                                    style="font-weight: 500;" for="address">Address
+                                                                    :</label>
+                                                            </div>
+                                                            <div class="overflow-auto col-sm-6 order-sm-12">
+                                                                <label class="form-label w-100"
+                                                                    style="padding-left: 3rem;" for="a-address"
+                                                                    id="a-address">{{customers[0][4]}} </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
